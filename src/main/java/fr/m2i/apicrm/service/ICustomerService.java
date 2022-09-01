@@ -5,7 +5,13 @@ import java.util.List;
 
 public interface ICustomerService {
 
-      public List<Customer> findAll();
+      List<Customer> findAll();
 
-      public Customer findById(Long id);
+      Customer findById(Long id);
+
+      Customer create(Customer customer);
+
+      Customer update(Customer customer);
+
+      void delete(Customer customer);
 }

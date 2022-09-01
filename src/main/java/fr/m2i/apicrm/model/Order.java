@@ -40,10 +40,9 @@ public class Order {
       @Column(name = "status", columnDefinition = "ENUM('CANCELED','OPTION','CONFIRMED') NOT NULL")
       private Status status;
 
-      @ManyToOne(fetch = FetchType.LAZY)
-      @JoinColumn(name = "id", nullable = false)
-      private Customer customer;
-
+//      @ManyToOne(fetch = FetchType.LAZY)
+//      @JoinColumn(name = "id", nullable = false)
+//      private Customer customer;
       public Long getId() {
             return id;
       }
@@ -108,12 +107,11 @@ public class Order {
             this.status = status;
       }
 
-      public Customer getCustomer() {
-            return customer;
-      }
-
-      public void setCustomer(Customer customer) {
-            this.customer = customer;
-      }
-
+//      public Customer getCustomer() {
+//            return customer;
+//      }
+//
+//      public void setCustomer(Customer customer) {
+//            this.customer = customer;
+//      }
 }

@@ -22,13 +22,13 @@ public class CustomerDTO {
 
       private String country;
 
-      private Integer state;
+      private String state;
 
       public CustomerDTO() {
 
       }
 
-      public CustomerDTO(Long id, String lastname, String firstname, String company, String email, String phone, String adress, String zipCode, String city, String country, Integer state) {
+      public CustomerDTO(Long id, String lastname, String firstname, String company, String email, String phone, String adress, String zipCode, String city, String country, String state) {
             this.id = id;
             this.lastname = lastname;
             this.firstname = firstname;
@@ -122,11 +122,11 @@ public class CustomerDTO {
             this.country = country;
       }
 
-      public Integer getState() {
+      public String getState() {
             return state;
       }
 
-      public void setState(Integer state) {
+      public void setState(String state) {
             this.state = state;
       }
 

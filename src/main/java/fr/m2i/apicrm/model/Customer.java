@@ -41,8 +41,24 @@ public class Customer {
       @Column(columnDefinition = "TINYINT (1) DEFAULT 1")
       private Boolean state;
 
-      @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-      private List<Order> orders;
+//      @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+//      private List<Order> orders;
+      public Customer() {
+      }
+
+      public Customer(Long id, String lastname, String firstname, String company, String email, String phone, String adress, String zipCode, String city, String country, Boolean state) {
+            this.id = id;
+            this.lastname = lastname;
+            this.firstname = firstname;
+            this.company = company;
+            this.email = email;
+            this.phone = phone;
+            this.adress = adress;
+            this.zipCode = zipCode;
+            this.city = city;
+            this.country = country;
+            this.state = state;
+      }
 
       public Long getId() {
             return id;
@@ -131,13 +147,13 @@ public class Customer {
       public void setState(Boolean state) {
             this.state = state;
       }
-
-      public List<Order> getOrders() {
-            return orders;
-      }
-
-      public void setOrders(List<Order> orders) {
-            this.orders = orders;
-      }
+//
+//      public List<Order> getOrders() {
+//            return orders;
+//      }
+//
+//      public void setOrders(List<Order> orders) {
+//            this.orders = orders;
+//      }
 
 }
