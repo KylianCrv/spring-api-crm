@@ -61,9 +61,17 @@ public class CustomerController {
       }
 
       @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-      public ResponseEntity<Object> createCustomer(@RequestBody CustomerDTO customerDTO) {
-            Customer customer = customerService.create(CustomerMapper.buildCustomer(customerDTO));
+      public ResponseEntity<Object> createCustomer(@RequestBody CustomerDTO dto) {
 
-            return ResponseEntity.status(HttpStatus.CREATED).body(customer);
+            try {
+                  Customer toCreate = CustomerMapper.buildCustomer(dto);
+                  Customer created = customerService.create(toCreate);
+                  CustomerDTO createdDTO = CustomerMapper.buildCustomerDTO(created);
+
+                  return ResponseEntity.status(HttpStatus.CREATED).body(createdDTO);
+            } catch (Exception e) {
+                  return ErrorResponseEntity.build("An error occured", 500, "/create", HttpStatus.INTERNAL_SERVER_ERROR);
+
+            }
       }
 }

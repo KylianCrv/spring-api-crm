@@ -30,12 +30,12 @@ public class CustomerService implements ICustomerService {
 
       @Override
       public Customer create(Customer customer) {
-            repo.save(customer);
-            return customer;
+
+            return repo.save(customer);
       }
 
       @Override
-      public Customer update(Customer customer) {
+      public Customer update(Long id, Customer customer) {
             return customer;
       }
 

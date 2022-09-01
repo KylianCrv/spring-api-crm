@@ -26,34 +26,59 @@ public class CustomerMapper {
             );
       }
 
-      public static Customer buildCustomer(CustomerDTO customerDTO) {
-            if (customerDTO == null) {
-                  return new Customer();
+      public static Customer buildCustomer(CustomerDTO dto) {
+            if (dto == null) {
+                  return null;
             }
 
-            Boolean state;
-            if (customerDTO.getState().equals("ACTIF")) {
-                  state = true;
-            } else {
-                  state = false;
-            }
+            Boolean state = "ACTIF".equals(dto.getState());
 
-            return new Customer(customerDTO.getId(),
-                    customerDTO.getLastname(),
-                    customerDTO.getFirstname(),
-                    customerDTO.getCompany(),
-                    customerDTO.getEmail(),
-                    customerDTO.getPhone(),
-                    customerDTO.getAdress(),
-                    customerDTO.getZipCode(),
-                    customerDTO.getCity(),
-                    customerDTO.getCountry(),
+            return new Customer(dto.getId(),
+                    dto.getLastname(),
+                    dto.getFirstname(),
+                    dto.getCompany(),
+                    dto.getEmail(),
+                    dto.getPhone(),
+                    dto.getAdress(),
+                    dto.getZipCode(),
+                    dto.getCity(),
+                    dto.getCountry(),
                     state
             );
       }
 
       public static Customer copy(Customer customer, Customer content) {
 
+            if (customer == null || content == null) {
+                  return null;
+            }
+            if (content.getLastname() != null) {
+                  customer.setLastname(content.getLastname());
+            }
+            if (content.getFirstname() != null) {
+                  customer.setFirstname(content.getFirstname());
+            }
+            if (content.getCompany() != null) {
+                  customer.setCompany(content.getCompany());
+            }
+            if (content.getEmail() != null) {
+                  customer.setEmail(content.getEmail());
+            }
+            if (content.getPhone() != null) {
+                  customer.setPhone(content.getPhone());
+            }
+            if (content.getAdress() != null) {
+                  customer.setAdress(content.getAdress());
+            }
+            if (content.getZipCode() != null) {
+                  customer.setZipCode(content.getZipCode());
+            }
+            if (content.getCountry() != null) {
+                  customer.setCountry(content.getCountry());
+            }
+            if (content.getState() != null) {
+                  customer.setState(content.getState());
+            }
             return null;
       }
 }
