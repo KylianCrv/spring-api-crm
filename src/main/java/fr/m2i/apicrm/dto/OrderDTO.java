@@ -1,53 +1,31 @@
-package fr.m2i.apicrm.model;
+package fr.m2i.apicrm.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import fr.m2i.apicrm.model.Customer;
 
-@Entity
-@Table(name = "orders")
-public class Order {
+public class OrderDTO {
 
-      @Id
-      @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
 
       private String type;
 
       private String label;
 
-      @Column(name = "number_of_days")
       private String numberOfDays;
 
-      @Column(name = "unit_price")
       private Integer unitPrice;
 
-      @Column(name = "total_exclude_taxe")
       private Float totalExcludeTaxe;
 
-      @Column(name = "total_with_taxe")
       private Float totalWithTaxe;
 
-      @Enumerated(EnumType.STRING)
-      @Column(name = "status", columnDefinition = "ENUM('CANCELED','OPTION','CONFIRMED') NOT NULL")
-      private Status status;
+      private String status;
 
-      @ManyToOne(fetch = FetchType.LAZY)
-      @JoinColumn(name = "id", nullable = false)
       private Customer customer;
 
-      public Order() {
+      public OrderDTO() {
       }
 
-      public Order(Long id, String type, String label, String numberOfDays, Integer unitPrice, Float totalExcludeTaxe, Float totalWithTaxe, Status status, Customer customer) {
+      public OrderDTO(Long id, String type, String label, String numberOfDays, Integer unitPrice, Float totalExcludeTaxe, Float totalWithTaxe, String status, Customer customer) {
             this.id = id;
             this.type = type;
             this.label = label;
@@ -115,11 +93,11 @@ public class Order {
             this.totalWithTaxe = totalWithTaxe;
       }
 
-      public Status getStatus() {
+      public String getStatus() {
             return status;
       }
 
-      public void setStatus(Status status) {
+      public void setStatus(String status) {
             this.status = status;
       }
 
