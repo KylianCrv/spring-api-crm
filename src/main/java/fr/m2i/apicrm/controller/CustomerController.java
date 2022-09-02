@@ -8,6 +8,7 @@ import fr.m2i.apicrm.model.Customer;
 import fr.m2i.apicrm.response.ErrorResponseEntity;
 
 import fr.m2i.apicrm.service.ICustomerService;
+import io.swagger.annotations.ApiOperation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.websocket.server.PathParam;
@@ -29,6 +30,7 @@ public class CustomerController {
       }
 
       @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+      @ApiOperation(value = " Return the list of all customers", nickname = "get all customers", response = CustomerDTO.class)
       public ResponseEntity<Object> getAllCustomers() {
             List<Customer> customers = customerService.findAll();
             List<CustomerDTO> dtos = new ArrayList();
@@ -41,6 +43,7 @@ public class CustomerController {
       }
 
       @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+      @ApiOperation(value = " Return one customer", nickname = "get customer by id", response = CustomerDTO.class)
       public ResponseEntity<Object> getCustomerById(@PathVariable("id") String id) {
 
             try {
@@ -61,6 +64,7 @@ public class CustomerController {
       }
 
       @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+      @ApiOperation(value = " Create a customer", nickname = "create customer", response = CustomerDTO.class)
       public ResponseEntity<Object> createCustomer(@RequestBody CustomerDTO dto) {
 
             try {
@@ -76,6 +80,7 @@ public class CustomerController {
       }
 
       @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+      @ApiOperation(value = " Update a customer", nickname = "update customer", response = CustomerDTO.class)
       public ResponseEntity<Object> updateCustomer(@PathVariable("id") String id, @RequestBody CustomerDTO dto) {
 
             try {

@@ -20,12 +20,12 @@ public class OrderDTO {
 
       private String status;
 
-      private Customer customer;
+      private CustomerDTO dto;
 
       public OrderDTO() {
       }
 
-      public OrderDTO(Long id, String type, String label, String numberOfDays, Integer unitPrice, Float totalExcludeTaxe, Float totalWithTaxe, String status, Customer customer) {
+      public OrderDTO(Long id, String type, String label, String numberOfDays, Integer unitPrice, Float totalExcludeTaxe, Float totalWithTaxe, String status, CustomerDTO dto) {
             this.id = id;
             this.type = type;
             this.label = label;
@@ -34,7 +34,7 @@ public class OrderDTO {
             this.totalExcludeTaxe = totalExcludeTaxe;
             this.totalWithTaxe = totalWithTaxe;
             this.status = status;
-            this.customer = customer;
+            this.dto = dto;
       }
 
       public Long getId() {
@@ -101,11 +101,17 @@ public class OrderDTO {
             this.status = status;
       }
 
-      public Customer getCustomer() {
-            return customer;
+      public CustomerDTO getCustomer() {
+            return dto;
       }
 
-      public void setCustomer(Customer customer) {
-            this.customer = customer;
+      public void setCustomer(CustomerDTO dto) {
+            this.dto = dto;
       }
+
+      @Override
+      public String toString() {
+            return "OrderDTO{" + "id=" + id + ", type=" + type + ", label=" + label + ", numberOfDays=" + numberOfDays + ", unitPrice=" + unitPrice + ", totalExcludeTaxe=" + totalExcludeTaxe + ", totalWithTaxe=" + totalWithTaxe + ", status=" + status + ", dto=" + dto + '}';
+      }
+
 }
