@@ -73,12 +73,15 @@ public class CustomerMapper {
             if (content.getZipCode() != null) {
                   customer.setZipCode(content.getZipCode());
             }
+            if (content.getCity() != null) {
+                  customer.setCity(content.getCity());
+            }
             if (content.getCountry() != null) {
                   customer.setCountry(content.getCountry());
             }
             if (content.getState() != null) {
                   customer.setState(content.getState());
             }
-            return null;
+            return customer;
       }
 }

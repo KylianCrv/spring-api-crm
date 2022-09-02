@@ -156,4 +156,9 @@ public class Customer {
 //            this.orders = orders;
 //      }
 
+      @Override
+      public String toString() {
+            return "Customer{" + "id=" + id + ", lastname=" + lastname + ", firstname=" + firstname + ", company=" + company + ", email=" + email + ", phone=" + phone + ", adress=" + adress + ", zipCode=" + zipCode + ", city=" + city + ", country=" + country + ", state=" + state + '}';
+      }
+
 }

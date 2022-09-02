@@ -74,4 +74,29 @@ public class CustomerController {
 
             }
       }
+
+      @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+      public ResponseEntity<Object> updateCustomer(@PathVariable("id") String id, @RequestBody CustomerDTO dto) {
+
+            try {
+                  System.out.println(dto);
+                  Long customerId = Long.parseLong(id);
+                  Customer content = CustomerMapper.buildCustomer(dto);
+                  System.out.println(content);
+
+                  Customer updated = customerService.update(customerId, content);
+
+                  CustomerDTO updatedDTO = CustomerMapper.buildCustomerDTO(updated);
+
+                  return ResponseEntity.status(HttpStatus.OK).body(updatedDTO);
+
+            } catch (NumberFormatException ne) {
+                  return ErrorResponseEntity.build("the parameter id is not valid", 400, "/v1/customer/" + id, HttpStatus.MULTI_STATUS);
+            } catch (NotFoundException nfe) {
+                  return ErrorResponseEntity.build("Customer not found", 404, "/v1/customer/" + id, HttpStatus.NOT_FOUND);
+            } catch (Exception e) {
+                  System.out.println(e.getMessage());
+                  return ErrorResponseEntity.build("An error occured", 500, "/v1/customer/" + id, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+      }
 }
